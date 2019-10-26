@@ -5,11 +5,9 @@ using System.Text;
 
 namespace DDona.Admister.PedidosContext.Domain.Entities
 {
-    public class Pessoa : Entity
+    public class Complemento : Entity
     {
-        public Pessoa(Guid id)
-        {
-            this.Id = id;
-        }
+        public string Descricao { get; private set; }
+        public decimal Valor { get; set; }
     }
 }
