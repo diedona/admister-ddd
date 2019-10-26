@@ -25,13 +25,13 @@ namespace DDona.Admister.PedidosContext.Domain.Entities
             // não pode adicionar 2x o mesmo complemento
             if(_complementos.Any(x => x.Id.Equals(complemento.Id)))
             {
-                // notify
+                AdicionarErroValidacao("Complemento.Id", "Complemento já adicionado");
             }
 
             // não pode ter mais que 5 complementos
             if(_complementos.Count >= 5)
             {
-                // notify
+                AdicionarErroValidacao("Acai.Complementos", "Já possui 5 complementos");
             }
 
             _complementos.Add(complemento);
