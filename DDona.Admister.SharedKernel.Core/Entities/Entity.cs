@@ -10,6 +10,7 @@ namespace DDona.Admister.SharedKernel.Core.Entities
         protected Entity()
         {
             Id = Guid.NewGuid();
+            ValidationResult = new ValidationResult();
         }
 
         public Guid Id { get; protected set; }
