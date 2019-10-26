@@ -12,7 +12,8 @@ namespace DDona.Admister.PedidosContext.Tests.Entities
         [Fact]
         public void Invalido_Complemento_Repetido()
         {
-            var acai = new Acai(ETamanhoAcai.Pequeno);
+            var tamanho = new AcaiTamanho(ETamanhoAcai.Pequeno, 5m);
+            var acai = new Acai(tamanho);
             var complemento = new Complemento("Banana", 2.5m);
 
             acai.AddComplemento(complemento);

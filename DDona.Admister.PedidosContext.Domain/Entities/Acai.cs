@@ -11,13 +11,13 @@ namespace DDona.Admister.PedidosContext.Domain.Entities
     {
         private readonly IList<Complemento> _complementos;
 
-        public Acai(ETamanhoAcai tamanho)
+        public Acai(AcaiTamanho tamanho)
         {
             Tamanho = tamanho;
             _complementos = new List<Complemento>();
         }
 
-        public ETamanhoAcai Tamanho { get; private set; }
+        public AcaiTamanho Tamanho { get; private set; }
         public IReadOnlyCollection<Complemento> Complementos { get { return _complementos.ToArray(); } }
 
         public void AddComplemento(Complemento complemento)
