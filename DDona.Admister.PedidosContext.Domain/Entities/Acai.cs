@@ -23,13 +23,13 @@ namespace DDona.Admister.PedidosContext.Domain.Entities
         public void AddComplemento(Complemento complemento)
         {
             // não pode adicionar 2x o mesmo complemento
-            if(_complementos.Any(x => x.Id.Equals(complemento.Id)))
+            if (_complementos.Any(x => x.Id.Equals(complemento.Id)))
             {
                 AdicionarErroValidacao("Complemento.Id", "Complemento já adicionado");
             }
 
             // não pode ter mais que 5 complementos
-            if(_complementos.Count >= 5)
+            if (_complementos.Count >= 5)
             {
                 AdicionarErroValidacao("Acai.Complementos", "Já possui 5 complementos");
             }
@@ -49,6 +49,15 @@ namespace DDona.Admister.PedidosContext.Domain.Entities
             }
 
             return valor;
+        }
+
+        public static class AcaiFactory
+        {
+            public static Acai CriarAcai(ETamanhoAcai tamanho, decimal valor)
+            {
+                var acai = new Acai(new AcaiTamanho(tamanho, valor));
+                return acai;
+            }
         }
     }
 }

@@ -15,9 +15,8 @@ namespace DDona.Admister.PedidosContext.Tests.Entities
             Pessoa pessoa1 = new Pessoa(Guid.NewGuid());
             Pessoa pessoa2 = new Pessoa(Guid.NewGuid());
 
-            AcaiTamanho tamanho = new AcaiTamanho(ETamanhoAcai.Grande, 10m);
-            Acai acai1 = new Acai(tamanho);
-            Acai acai2 = new Acai(tamanho);
+            Acai acai1 = Acai.AcaiFactory.CriarAcai(ETamanhoAcai.Grande, 10m);
+            Acai acai2 = Acai.AcaiFactory.CriarAcai(ETamanhoAcai.Grande, 15m);
 
             AcaiPessoa ap1 = new AcaiPessoa(pessoa1, acai1);
             AcaiPessoa ap2 = new AcaiPessoa(pessoa2, acai2);
@@ -28,7 +27,7 @@ namespace DDona.Admister.PedidosContext.Tests.Entities
 
             //
 
-            decimal precoCerto = 20;
+            decimal precoCerto = 25;
 
             //
 
