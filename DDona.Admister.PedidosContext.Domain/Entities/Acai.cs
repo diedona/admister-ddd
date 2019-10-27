@@ -36,5 +36,19 @@ namespace DDona.Admister.PedidosContext.Domain.Entities
 
             _complementos.Add(complemento);
         }
+
+        public decimal CalcularValor()
+        {
+            // valor base
+            decimal valor = Tamanho.Valor;
+
+            // somando os complementos
+            foreach (var complemento in _complementos)
+            {
+                valor += complemento.Valor;
+            }
+
+            return valor;
+        }
     }
 }
