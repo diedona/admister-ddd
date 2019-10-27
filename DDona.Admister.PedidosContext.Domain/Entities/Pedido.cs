@@ -10,14 +10,31 @@ namespace DDona.Admister.PedidosContext.Domain.Entities
     {
         private readonly IList<AcaiPessoa> _acaiPessoas;
 
-        public Pedido(string observacoes, IList<AcaiPessoa> acaiPessoas)
+        public Pedido(string observacoes)
         {
             Observacoes = observacoes;
-            _acaiPessoas = acaiPessoas;
+            _acaiPessoas = new List<AcaiPessoa>();
         }
 
         public string Observacoes { get; set; }
         public IReadOnlyCollection<AcaiPessoa> AcaiPessoas { get { return _acaiPessoas.ToArray(); } }
+
+        public void AdicionarItem(AcaiPessoa acaiPessoa)
+        {
+            // SE A PESSOA JÁ FOI ADICIONADA
+            if(_acaiPessoas.Any(x => x.Pessoa.Id.Equals(acaiPessoa.Pessoa.Id)))
+            {
+                AdicionarErroValidacao("AcaiPessoa.Pessoa.Id", "Esta pessoa já está no pedido");
+            }
+
+            // SE O ACAI JÁ FOI ADICIONADO
+            if (_acaiPessoas.Any(x => x.Acai.Id.Equals(acaiPessoa.Acai.Id)))
+            {
+                AdicionarErroValidacao("AcaiPessoa.Acai.Id", "Este açaí já está no pedido");
+            }
+
+            _acaiPessoas.Add(acaiPessoa);
+        }
 
         public decimal CalcularValorTotal()
         {

@@ -22,7 +22,9 @@ namespace DDona.Admister.PedidosContext.Tests.Entities
             AcaiPessoa ap1 = new AcaiPessoa(pessoa1, acai1);
             AcaiPessoa ap2 = new AcaiPessoa(pessoa2, acai2);
 
-            Pedido pedido = new Pedido("Trás rápido", new AcaiPessoa[] { ap1, ap2 });
+            Pedido pedido = new Pedido("Trás rápido");
+            pedido.AdicionarItem(ap1);
+            pedido.AdicionarItem(ap2);
 
             //
 
